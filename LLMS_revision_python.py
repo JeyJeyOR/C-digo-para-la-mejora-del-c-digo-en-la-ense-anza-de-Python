@@ -63,7 +63,7 @@ model = AutoModelForCausalLM.from_pretrained(
     bnb_4bit_quant_type="nf4"
 )
 
-prompt = build_prompt(reference_code, code_to_evaluate, topic_level=2)
+prompt = build_prompt(reference_code, code_to_evaluate, topic_level=2)    ##Nivel de dificultad
 
 start_time = time.time()
 inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
@@ -93,5 +93,6 @@ with open("resultado_llama.txt", "w", encoding="utf-8") as f:
 
 tokens = tokenizer(prompt, return_tensors="pt")["input_ids"]
 print(f"Número de tokens: {tokens.shape[1]}")
+
 
 
